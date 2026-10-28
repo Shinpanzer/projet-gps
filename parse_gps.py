@@ -1,3 +1,4 @@
+
 import csv
 import math
 import hashlib
@@ -66,9 +67,11 @@ if __name__ == '__main__':
     donnees = extraire_donnees_brutes(lignes)
     print('Lignes GPS filtrées :', len(lignes))
     print('Positions lues :', len(donnees))
+
     # Version strictement conforme au seuil +/- 1 degré du PDF.
     strict = nettoyer_et_dedoublonner(donnees, 1.0)
     exporter_et_hasher(strict, 'output_cleaned.csv')
+
     # Version complémentaire : conserve les déplacements après arrondi.
     detail = nettoyer_et_dedoublonner(donnees, 0.0)
     exporter_et_hasher(detail, 'output_detaille.csv')
